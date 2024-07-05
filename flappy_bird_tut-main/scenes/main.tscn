@@ -1,0 +1,98 @@
+[gd_scene load_steps=9 format=3 uid="uid://blj5g47uwo7m0"]
+
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_5g6v2"]
+[ext_resource type="PackedScene" uid="uid://cr3pl7yfk32tb" path="res://scenes/pipe.tscn" id="2_h58j0"]
+[ext_resource type="PackedScene" uid="uid://b6xt1pam4caki" path="res://scenes/bird.tscn" id="3_4ap2d"]
+[ext_resource type="Texture2D" uid="uid://dif8ec7is526n" path="res://assets/background2.png" id="3_56y46"]
+[ext_resource type="PackedScene" uid="uid://d2ort7tfi33lg" path="res://scenes/ground.tscn" id="4_kx1e6"]
+[ext_resource type="PackedScene" uid="uid://snrvq7jkapgf" path="res://scenes/game_over.tscn" id="6_yk7bg"]
+[ext_resource type="PackedScene" uid="uid://bxd7xyc4lnweo" path="res://scenes/banteng.tscn" id="7_vuucx"]
+[ext_resource type="AudioStream" uid="uid://cimwqwtixq1yv" path="res://assets/sound/sfxbanteng.mp3" id="8_yf61r"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_5g6v2")
+pipe_scene = ExtResource("2_h58j0")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = -1
+anchor_right = 0.996528
+anchor_bottom = 0.858974
+texture = ExtResource("3_56y46")
+metadata/_edit_use_anchors_ = true
+
+[node name="Ground" parent="." instance=ExtResource("4_kx1e6")]
+z_index = 1
+position = Vector2(3, 882)
+
+[node name="Bird" parent="." instance=ExtResource("3_4ap2d")]
+unique_name_in_owner = true
+
+[node name="PipeTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="GameOver" parent="." instance=ExtResource("6_yk7bg")]
+
+[node name="ScoreLabel" type="Label" parent="."]
+z_index = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -85.0
+offset_right = 85.0
+offset_bottom = 58.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 40
+text = "SCORE: 0"
+
+[node name="speed" type="Label" parent="."]
+z_index = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.051
+anchor_right = 1.0
+anchor_bottom = 0.051
+offset_left = -233.0
+offset_top = 0.263996
+offset_right = -63.0
+offset_bottom = 55.264
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 40
+text = "speed: 4"
+
+[node name="gravity" type="Label" parent="."]
+z_index = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -249.0
+offset_top = 3.0
+offset_right = -5.0
+offset_bottom = 61.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 40
+text = "gravity: 2000"
+
+[node name="message" type="Label" parent="."]
+z_index = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -127.0
+offset_top = 253.0
+offset_right = 117.0
+offset_bottom = 311.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 40
+
+[node name="Banteng" parent="." instance=ExtResource("7_vuucx")]
+unique_name_in_owner = true
+position = Vector2(-44, 760)
+
+[node name="sfxbanteng" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-148, 766)
+stream = ExtResource("8_yf61r")
+
+[connection signal="hit" from="Ground" to="." method="_on_ground_hit"]
+[connection signal="timeout" from="PipeTimer" to="." method="_on_pipe_timer_timeout"]
+[connection signal="restart" from="GameOver" to="." method="_on_game_over_restart"]

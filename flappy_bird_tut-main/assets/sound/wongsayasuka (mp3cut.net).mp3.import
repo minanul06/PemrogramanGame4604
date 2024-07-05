@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d0qm0eg2fwne"
+path="res://.godot/imported/wongsayasuka (mp3cut.net).mp3-67ea951e95446c3b2e880e0c6693ac88.mp3str"
+
+[deps]
+
+source_file="res://assets/sound/wongsayasuka (mp3cut.net).mp3"
+dest_files=["res://.godot/imported/wongsayasuka (mp3cut.net).mp3-67ea951e95446c3b2e880e0c6693ac88.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

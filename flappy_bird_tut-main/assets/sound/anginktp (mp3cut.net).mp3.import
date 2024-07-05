@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://demkdn0e7t6e8"
+path="res://.godot/imported/anginktp (mp3cut.net).mp3-a6d359574bf20448c937a62c4a6e95a7.mp3str"
+
+[deps]
+
+source_file="res://assets/sound/anginktp (mp3cut.net).mp3"
+dest_files=["res://.godot/imported/anginktp (mp3cut.net).mp3-a6d359574bf20448c937a62c4a6e95a7.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

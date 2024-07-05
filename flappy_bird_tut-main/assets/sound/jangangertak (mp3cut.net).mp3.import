@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dxi1nihnfq4pw"
+path="res://.godot/imported/jangangertak (mp3cut.net).mp3-ff52710117eb9044f04c03d4c406f9f8.mp3str"
+
+[deps]
+
+source_file="res://assets/sound/jangangertak (mp3cut.net).mp3"
+dest_files=["res://.godot/imported/jangangertak (mp3cut.net).mp3-ff52710117eb9044f04c03d4c406f9f8.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,94 @@
+[gd_scene load_steps=14 format=3 uid="uid://cr3pl7yfk32tb"]
+
+[ext_resource type="Script" path="res://scenes/pipe.gd" id="1_i8p56"]
+[ext_resource type="Texture2D" uid="uid://gr4ijr5n5gyi" path="res://assets/artis/bottom.png" id="2_wyxqm"]
+[ext_resource type="AudioStream" uid="uid://demkdn0e7t6e8" path="res://assets/sound/anginktp (mp3cut.net).mp3" id="3_d52pg"]
+[ext_resource type="Texture2D" uid="uid://qfra1diirdw" path="res://assets/artis/mid.png" id="3_rq2se"]
+[ext_resource type="Texture2D" uid="uid://lqbav47dnlee" path="res://assets/artis/top.png" id="4_3giqo"]
+[ext_resource type="AudioStream" uid="uid://bi3hlsr26iwaa" path="res://assets/sound/slepet (mp3cut.net).mp3" id="4_hhrmo"]
+[ext_resource type="AudioStream" uid="uid://d0qm0eg2fwne" path="res://assets/sound/wongsayasuka (mp3cut.net).mp3" id="5_s7k85"]
+[ext_resource type="AudioStream" uid="uid://dxi1nihnfq4pw" path="res://assets/sound/jangangertak (mp3cut.net).mp3" id="6_tuqwh"]
+[ext_resource type="AudioStream" uid="uid://bgqmr4uuwtv0" path="res://assets/sound/gaban (mp3cut.net).mp3" id="7_bmfk2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rbhuw"]
+radius = 31.5
+height = 458.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0wuvw"]
+size = Vector2(72.5, 160)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_atu8d"]
+radius = 32.75
+height = 579.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_51tso"]
+size = Vector2(19.5, 153.219)
+
+[node name="Pipe" type="Area2D" groups=["pipes"]]
+position = Vector2(6, -79)
+script = ExtResource("1_i8p56")
+
+[node name="Bottom" type="Sprite2D" parent="."]
+position = Vector2(6, 527.25)
+scale = Vector2(0.389105, 1.21612)
+texture = ExtResource("2_wyxqm")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(4.5, 540)
+shape = SubResource("CapsuleShape2D_rbhuw")
+
+[node name="Mid" type="Sprite2D" parent="."]
+position = Vector2(4, 78.875)
+scale = Vector2(0.368421, 0.337034)
+texture = ExtResource("3_rq2se")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+position = Vector2(1.75, 77)
+shape = SubResource("RectangleShape2D_0wuvw")
+
+[node name="Top" type="Sprite2D" parent="."]
+position = Vector2(-5.5, -462.5)
+scale = Vector2(0.391586, 1.56739)
+texture = ExtResource("4_3giqo")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="."]
+position = Vector2(-1.75, -452.5)
+shape = SubResource("CapsuleShape2D_atu8d")
+
+[node name="ScoreArea" type="Area2D" parent="."]
+position = Vector2(13, 237)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreArea"]
+position = Vector2(-7.75, -1.60938)
+shape = SubResource("RectangleShape2D_51tso")
+
+[node name="ScoreArea2" type="Area2D" parent="."]
+position = Vector2(20, -92)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreArea2"]
+position = Vector2(-24, 8)
+shape = SubResource("RectangleShape2D_51tso")
+
+[node name="sound1" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_d52pg")
+
+[node name="sound2" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_hhrmo")
+
+[node name="sound3" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("5_s7k85")
+
+[node name="sound4" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("6_tuqwh")
+
+[node name="sound5" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("7_bmfk2")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="ScoreArea" to="." method="_on_score_area_body_entered"]
+[connection signal="body_entered" from="ScoreArea2" to="." method="_on_score_area_body_entered2"]
